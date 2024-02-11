@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Static/index.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Option 1: Include in HTML -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="popup">
+        <button id="close">&times;</button>
+        <h2>Automatic Pop-Up</h2>
+        <img class="img-popup" src="../Static/images/IMG-20240206-WA0017.jpg" alt=""><br><br>
+        <a href="trip.html">Let's Go</a>
+    </div>
+
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a href="index.html"><img src="../Static/images/images.jpeg" class="icon" alt="..."></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Portfolio
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#container">Places Visited</a></li>
+                            <hr class="dropdown-divider">
+                            <li><a class="dropdown-item" href="#">Photo Gallery</a></li>
+                            <li>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login_register.html">Sign In/Sign Up</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="about" id="about">
+        <div class="text">
+            <h1>We take care of your Trip</h1>
+            <img class="about-img" src="../Static/images/Kenyan Coast.jpeg" alt="">
+            <p>Embark on a journey with us at Twende Safaris. As passionate explorers, we curate unforgettable
+                experiences to enchanting destinations. Our expert team is dedicated to turning your travel dreams into
+                reality, ensuring every adventure is a tale worth telling. Discover, explore, and create lifelong
+                memories with Twende Safaris.</p>
+        </div>
+    </div>
+
+    <!-- <div class="container" id="container">
+
+        <div class="slide">
+
+            <div class="item" style="background-image: url(../Static/images/CROIG.jpeg);">
+                <div class="name">Las Vegas</div>
+                <div class="des">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis nisi ipsum quis
+                    accusantium ab vitae, adipisci obcaecati dicta molestiae vel quae itaque nihil aliquam voluptatem
+                    tempora ipsam, inventore fugiat maiores?</div>
+                <button>See More</button>
+            </div>
+            <div class="item" style="background-image: url(../Static/images/night.jpg);">
+                <div class="name">Camp Ndunda</div>
+                <div class="des">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis nisi ipsum quis
+                    accusantium ab vitae, adipisci obcaecati dicta molestiae vel quae itaque nihil aliquam voluptatem
+                    tempora ipsam, inventore fugiat maiores?</div>
+                <button>See More</button>
+            </div>
+
+            <div class="item" style="background-image: url(../Static/images/travelcar.jpeg);">
+                <div class="name">Samburu</div>
+                <div class="des">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis nisi ipsum quis
+                    accusantium ab vitae, adipisci obcaecati dicta molestiae vel quae itaque nihil aliquam voluptatem
+                    tempora ipsam, inventore fugiat maiores?</div>
+                <button>See More</button>
+            </div>
+
+            <div class="item" style="background-image: url(../Static/images/tent.jpg);">
+                <div class="name">Hell's Gate</div>
+                <div class="des">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis nisi ipsum quis
+                    accusantium ab vitae, adipisci obcaecati dicta molestiae vel quae itaque nihil aliquam voluptatem
+                    tempora ipsam, inventore fugiat maiores?</div>
+                <button>See More</button>
+            </div>
+
+            <div class="item" style="background-image: url(../Static/images/Kenyan\ Coast.jpeg);">
+                <div class="name">Coast</div>
+                <div class="des">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis nisi ipsum quis
+                    accusantium ab vitae, adipisci obcaecati dicta molestiae vel quae itaque nihil aliquam voluptatem
+                    tempora ipsam, inventore fugiat maiores?</div>
+                <button>See More</button>
+            </div>
+
+            <div class="item" style="background-image: url(../Static/images/twendesafaris.png);">
+                <div class="name">Mt Longonot</div>
+                <div class="des">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis nisi ipsum quis
+                    accusantium ab vitae, adipisci obcaecati dicta molestiae vel quae itaque nihil aliquam voluptatem
+                    tempora ipsam, inventore fugiat maiores?</div>
+                <button>See More</button>
+            </div>
+        </div>
+
+        <div class="button">
+            <button class="prev"><i class="bi bi-caret-left-fill"></i></button>
+            <button class="next"><i class="bi bi-caret-right-fill"></i></button>
+        </div>
+    </div> -->
+
+
+    <!-- contactus section -->
+
+    <div class="Contact">
+        <div class="contact-container">
+            <form action="https://api.web3forms.com/submit" method="POST" class="contact-left">
+                <div class="contact-left-title">
+                    <h2 id="contact">get in touch</h2>
+                    <hr>
+                </div>
+                <input type="hidden" name="access_key" value="b8e9a704-6a30-442d-94b7-195604fe32e7">
+                <input type="text" name="name" placeholder="Your Name" class="contact-inputs">
+                <input type="email" name="email" placeholder="Your Email" class="contact-inputs">
+                <textarea name="message" class="contact-inputs" placeholder="Your Message"></textarea>
+                <button type="submit">Submit <i class="bi bi-arrow-up-right-circle-fill"></i></button>
+            </form>
+            <div class="contact-right">
+                <img src="../Static/images/undraw_respond_re_iph2.svg" alt="">
+            </div>
+        </div>
+    </div>
+
+    <script src="../Static/index.js"></script>
+    <script type="text/javascript">
+        window.addEventListener("load", function () {
+            setTimeout(
+                function open(event) {
+                    document.querySelector(".popup").style.display = "block";
+                },
+                2000
+            )
+        });
+
+
+        document.querySelector("#close").addEventListener("click", function () {
+            document.querySelector(".popup").style.display = "none";
+        });
+    </script>
+
+</body>
+
+</html>
