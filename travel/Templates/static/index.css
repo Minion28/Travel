@@ -15,6 +15,7 @@ h2{
 }
 
 .popup {
+  opacity: 96%;
   background-color: #6C63FF;
   width: 450px;
   padding: 20px 70px;
