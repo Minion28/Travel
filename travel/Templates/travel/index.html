@@ -23,7 +23,7 @@
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a href="/"><img src="{% static 'images/images.jpeg' %}" class="icon" alt="..."></a>
+            <a href="{% url 'home' %}"><img src="{% static 'images/images.jpeg' %}" class="icon" alt="..."></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -39,19 +39,15 @@
                             aria-expanded="false">
                             Portfolio
                         </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#container">Places Visited</a></li>
-                            <hr class="dropdown-divider">
-                            <li><a class="dropdown-item" href="#">Photo Gallery</a></li>
-                            <li>
-                            </li>
-                        </ul>
+                        <li class="nav-item">
+                        <a class="nav-link" href="#about">Portfolio</a>
+                    </li>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#contact">Contact Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="login_register.html">Sign In/Sign Up</a>
+                        <a class="nav-link" href="{% url 'signin' %}">Sign In/Sign Up</a>
                     </li>
                 </ul>
             </div>
@@ -62,12 +58,13 @@
         <button id="close">&times;</button>
         <h2>Let's Goooo!!!</h2>
         <img class="img-popup" src="{% static 'images/IMG-20240206-WA0017.jpg' %}" alt=""><br><br>
-        <a href="trip.html">Let's Go</a>
+        <a href="{% url 'trip' %}">Let's Go</a>
     </div>
+    <h1>Welcome, {{ user.username }}!</h1>
 
     <div class="about" id="about">
         <div class="text">
-            <h1>We take care of your Trip</h1>
+            <h1>We Take Care Of Your Trip</h1>
             <img class="about-img" src="{% static 'images/Kenyan Coast.jpeg' %}" alt="">
             <p>Embark on a journey with us at Twende Safaris. As passionate explorers, we curate unforgettable
                 experiences to enchanting destinations. Our expert team is dedicated to turning your travel dreams into
@@ -76,7 +73,7 @@
         </div>
     </div>
 
-    <h2>Places Visited</h2>
+    <h2>PORTFOLIO</h2>
 
     <div class="carousel">
         <!-- list item -->
@@ -200,11 +197,11 @@
     <!-- contactus section -->
 
     <div class="Contact">
-        <h2>Contact Us</h2>
+        <h2>CONTACT US</h2>
         <div class="contact-container">
             <form action="https://api.web3forms.com/submit" method="POST" class="contact-left">
                 <div class="contact-left-title">
-                    <h2 id="contact">get in touch</h2>
+                    <h2 id="contact">Get In Touch</h2>
                 </div>
                 <input type="hidden" name="access_key" value="b8e9a704-6a30-442d-94b7-195604fe32e7">
                 <input type="text" name="name" placeholder="Your Name" class="contact-inputs">

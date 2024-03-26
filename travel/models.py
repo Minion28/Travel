@@ -1,11 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-class Account(models.Model):
+from django.db import models
+from django.contrib.auth.models import User
+
+class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    name = models.CharField(max_length=255)
-    phone_no = models.CharField(max_length=255)
-    image = models.ImageField(upload_to='account/')
+    name = models.CharField(max_length=100)
+    image = models.ImageField(upload_to="profile_images/", blank=True)
+    phone_number = models.CharField(max_length=20, blank=True)
 
     def __str__(self):
         return self.user.username

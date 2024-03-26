@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +17,7 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a href="index.html"><img src="../static/images/images.jpeg" class="icon" alt="..."></a>
+            <a href="index.html"><img src="{% static 'images/images.jpeg' %}" class="icon" alt="..."></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -53,7 +54,7 @@
 
     <div class="trip">
         <h1>Venue</h1>
-        <img src="../static/images/IMG-20240206-WA0017.jpg" alt="img">
+        <img src="{% static 'images/IMG-20240206-WA0017.jpg' %}" alt="img">
         <p>Description</p>
         <button>Pay</button>
     </div>

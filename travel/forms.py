@@ -1,13 +1,26 @@
 from django import forms
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Account, Place, Booking, Trip, Review
+from .models import *
 
-class AccountForm(forms.ModelForm):
+class UserRegistrationForm(UserCreationForm):
+    email = forms.EmailField()
+
+    class Meta:
+        model = User
+        fields = ("username", "email", "password1", "password2")
+
+class UserLoginForm(forms.Form):
+    email = forms.EmailField()
     password = forms.CharField(widget=forms.PasswordInput)
 
     class Meta:
-        model = Account
-        fields = ('user', 'name', 'phone_no', 'image')
+        fields = ("email", "password")
+
+class UserProfileForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ("name", "image", "phone_number")
 
 class PlaceForm(forms.ModelForm):
     class Meta:
@@ -28,3 +41,13 @@ class ReviewForm(forms.ModelForm):
     class Meta:
         model = Review
         fields = ('review',)
+
+class SignInForm(forms.Form):
+    username = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Username'}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Password'}))
+
+class SignUpForm(forms.Form):
+    username = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Username'}))
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'placeholder': 'Email'}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Password'}))
+    confirm_password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Confirm Password'}))
