@@ -20,47 +20,22 @@
 <body>
 
 
-    <!-- navbar -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <a href="{% url 'home' %}"><img src="{% static 'images/images.jpeg' %}" class="icon" alt="..."></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Portfolio
-                        </a>
-                        <li class="nav-item">
-                        <a class="nav-link" href="#about">Portfolio</a>
-                    </li>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'signin' %}">Sign In/Sign Up</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    {% include 'travel/navbar.html' %}
+
 
     <div class="popup">
         <button id="close">&times;</button>
         <h2>Let's Goooo!!!</h2>
         <img class="img-popup" src="{% static 'images/IMG-20240206-WA0017.jpg' %}" alt=""><br><br>
-        <a href="{% url 'trip' %}">Let's Go</a>
+        <a href="{% url 'trip' %}">See more</a>
     </div>
-    <h1>Welcome, {{ user.username }}!</h1>
+    <h1>Welcome,
+        {% if user.is_authenticated %}
+            {{ user.username }}
+        {% else %}
+            Traveller
+        {% endif %}
+    !</h1>
 
     <div class="about" id="about">
         <div class="text">
@@ -86,7 +61,10 @@
                     <div class="topic">TRAVEL</div>
                     <div class="des">
                         <!-- lorem 50 -->
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde, eaque optio ratione aliquid assumenda facere ab et quasi ducimus aut doloribus non numquam. Explicabo, laboriosam nisi reprehenderit tempora at laborum natus unde. Ut, exercitationem eum aperiam illo illum laudantium?
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima
+                        placeat, itaque eum neque officiis unde, eaque optio ratione aliquid assumenda facere ab et
+                        quasi ducimus aut doloribus non numquam. Explicabo, laboriosam nisi reprehenderit tempora at
+                        laborum natus unde. Ut, exercitationem eum aperiam illo illum laudantium?
                     </div>
                     <div class="buttons">
                         <button>SEE MORE</button>
@@ -100,7 +78,10 @@
                     <div class="title">Travel Car</div>
                     <div class="topic">TRAVEL</div>
                     <div class="des">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde, eaque optio ratione aliquid assumenda facere ab et quasi ducimus aut doloribus non numquam. Explicabo, laboriosam nisi reprehenderit tempora at laborum natus unde. Ut, exercitationem eum aperiam illo illum laudantium?
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima
+                        placeat, itaque eum neque officiis unde, eaque optio ratione aliquid assumenda facere ab et
+                        quasi ducimus aut doloribus non numquam. Explicabo, laboriosam nisi reprehenderit tempora at
+                        laborum natus unde. Ut, exercitationem eum aperiam illo illum laudantium?
                     </div>
                     <div class="buttons">
                         <button>SEE MORE</button>
@@ -114,7 +95,10 @@
                     <div class="title">CAMP NDUNDA</div>
                     <div class="topic">ROAD TRIP</div>
                     <div class="des">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde, eaque optio ratione aliquid assumenda facere ab et quasi ducimus aut doloribus non numquam. Explicabo, laboriosam nisi reprehenderit tempora at laborum natus unde. Ut, exercitationem eum aperiam illo illum laudantium?
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima
+                        placeat, itaque eum neque officiis unde, eaque optio ratione aliquid assumenda facere ab et
+                        quasi ducimus aut doloribus non numquam. Explicabo, laboriosam nisi reprehenderit tempora at
+                        laborum natus unde. Ut, exercitationem eum aperiam illo illum laudantium?
                     </div>
                     <div class="buttons">
                         <button>SEE MORE</button>
@@ -128,7 +112,10 @@
                     <div class="title">VIEWPOINT</div>
                     <div class="topic">PEOPLE</div>
                     <div class="des">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde, eaque optio ratione aliquid assumenda facere ab et quasi ducimus aut doloribus non numquam. Explicabo, laboriosam nisi reprehenderit tempora at laborum natus unde. Ut, exercitationem eum aperiam illo illum laudantium?
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima
+                        placeat, itaque eum neque officiis unde, eaque optio ratione aliquid assumenda facere ab et
+                        quasi ducimus aut doloribus non numquam. Explicabo, laboriosam nisi reprehenderit tempora at
+                        laborum natus unde. Ut, exercitationem eum aperiam illo illum laudantium?
                     </div>
                     <div class="buttons">
                         <button>SEE MORE</button>
@@ -186,8 +173,9 @@
         <!-- next prev -->
 
         <div class="arrows">
-            <button id="prev"><</button>
-            <button id="next">></button>
+            <button id="prev">
+                << /button>
+                    <button id="next">></button>
         </div>
         <!-- time running -->
         <div class="time"></div>

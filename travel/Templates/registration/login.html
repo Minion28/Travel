@@ -19,69 +19,31 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="cont-fluid">
-            <a href="{% url 'home' %}"><img src="{% static 'images/images.jpeg' %}" class="icon" alt="..."></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Portfolio
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#cont">Places Visited</a></li>
-                            <hr class="dropdown-divider">
-                            <li><a class="dropdown-item" href="#">Photo Gallery</a></li>
-                            <li>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'signin' %}">Sign In/Sign Up</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    {% include 'travel/navbar.html' %}
 
     <div class="cont">
         <div class="forms-cont">
             <div class="signin-signup">
-                <form action="{% url 'signin' %}" method="GET" class="sign-in-form">
+                <form action="{% url 'signin' %}" method="post" class="sign-up-form">
                     {% csrf_token %}
-                    <h2 class="title">Sign in</h2>
+                     <h2 class="title">Sign in</h2>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" id="email" placeholder="Email" />
+                        <input type="text" name="username" id="username" placeholder="Username" />
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" id="password" placeholder="Password" />
+                        <input type="password" name="password" id="password" placeholder="Password" />
                     </div>
                     <input type="submit" value="Login" class="btn solid" />
                 </form>
-                <form action="{% url 'signin' %}" method="post" class="sign-up-form">
+
+                <form action="{% url 'signup' %}" method="post" class="sign-in-form">
                     {% csrf_token %}
                     <h2 class="title">Sign up</h2>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" id="username" placeholder="Username" name="username"/>
-                    </div>
-                    <div class="input-field">
-                        <i class="fas fa-user"></i>
-                        <input type="text" id="username" name="name" placeholder="Full Name" />
+                        <input type="text" id="username" placeholder="Username" name="username" />
                     </div>
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
@@ -93,13 +55,20 @@
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" name="password1" id="password" placeholder="Password" />
+                        <input type="password" name="password1" id="password1" placeholder="Password" />
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                            <input type="password" name="password2" id="confirm_password" placeholder="Confirm Password" />
-                        </div>
+                        <input type="password" name="password2" id="password2" placeholder="Confirm Password" />
+                    </div>
                     <input type="submit" class="btn" value="Sign up" />
+                    {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                            {% endfor %}
+                    </ul>
+                    {% endif %}
                 </form>
             </div>
         </div>
@@ -107,24 +76,24 @@
         <div class="panels-cont">
             <div class="panel left-panel">
                 <div class="content">
-                    <h3>Hello, Friend!</h3>
+                    <h3>Welcome Back!</h3>
                     <p>
-                        Register with personal details to travel with us!
+                        Enter your personal details to view our next destination!
                     </p>
                     <button class="btn transparent" id="sign-up-btn">
-                        Sign up
+                        Sign Up
                     </button>
                 </div>
                 <img src="{% static 'images/undraw_buddies_2ae5.svg' %}" class="image" alt="" />
             </div>
             <div class="panel right-panel">
                 <div class="content">
-                    <h3>Welcome Back!</h3>
+                    <h3>Hello, Friend!</h3>
                     <p>
-                        Enter your personal details to view our next destination!
+                        Register with personal details to travel with us!
                     </p>
                     <button class="btn transparent" id="sign-in-btn">
-                        Sign in
+                        Sign In
                     </button>
                 </div>
                 <img src="{% static 'images/undraw_destinations_re_80yc.svg' %}" class="image" alt="" />

@@ -1,7 +1,10 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
+from django.contrib.auth import authenticate
 from .models import *
+
 
 class UserRegistrationForm(UserCreationForm):
     email = forms.EmailField()
@@ -11,11 +14,18 @@ class UserRegistrationForm(UserCreationForm):
         fields = ("username", "email", "password1", "password2")
 
 class UserLoginForm(forms.Form):
-    email = forms.EmailField()
-    password = forms.CharField(widget=forms.PasswordInput)
+    username = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}))
 
-    class Meta:
-        fields = ("email", "password")
+    def clean(self):
+        cleaned_data = super().clean()
+        username = cleaned_data.get("username")
+        password = cleaned_data.get("password")
+
+        user = authenticate(username=username, password=password)
+
+        if not user:
+            raise ValidationError("Invalid username or password.")
 
 class UserProfileForm(forms.ModelForm):
     class Meta:

@@ -1,53 +1,49 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.contrib import messages
-from django.views.decorators.http import require_http_methods
-
 from .forms import UserRegistrationForm, UserLoginForm, UserProfileForm
-from .models import UserProfile
+from django.contrib import messages
+from .models import *
 
-@require_http_methods(["GET", "POST"])
+
 def register(request):
-    if request.method == "POST":
+    if request.method == 'POST':
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, "Registration successful! You can now log in.")
-            return redirect(home)
-
+            messages.success(request, 'Registration successful. Please login.')
+            return redirect('home')  # Redirect to the homepage after successful registration
+        else:
+            messages.error(request, 'Registration failed. Please check the form data.')
     else:
         form = UserRegistrationForm()
+    return render(request, 'registration/login.html', {'form': form})
 
-    return render(request, 'travel/login_register.html', {"form": form})
-
-@require_http_methods(["GET", "POST"])
 def user_login(request):
-    if request.method == "POST":
-        form = UserLoginForm(data=request.POST)
+    if request.method == 'POST':
+        form = UserLoginForm(request.POST)
         if form.is_valid():
-            email = request.POST["email"]
-            password = request.POST["password"]
-            user = authenticate(request, email=email, password=password)
-
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                messages.success(request, "Login successful!")
-                return redirect('travel/index.html')
-            else:
-                messages.error(request, "Invalid email or password.")
-
+                return redirect('home')
     else:
         form = UserLoginForm()
+    return render(request, 'registration/login.html', {'form': form})
 
-    return render(request, 'travel/index.html' , {"form": form})
+@login_required
+def home(request):
+    return render(request, 'travel/index.html')
 
 @login_required
 def profile(request):
     user_profile = UserProfile.objects.get(user=request.user)
 
     if request.method == "POST":
-        form = UserProfileForm(request.POST, request.FILES, instance=user_profile)
+        form = UserProfileForm(
+            request.POST, request.FILES, instance=user_profile)
 
         if form.is_valid():
             form.save()
@@ -58,14 +54,23 @@ def profile(request):
 
     return render(request, 'travel/index.html', {"form": form})
 
+
 @login_required
 def log_out(request):
     logout(request)
     messages.success(request, "Logout successful!")
-    return redirect('travel/login_register.html')
+    return redirect('home')
 
+
+@login_required
 def trip(request):
     return render(request, 'travel/trip.html')
+
+
+def navbar(request):
+    return render(request, 'travel/navbar.html')
 # Create your views here.
+
+
 def home(request):
     return render(request, 'travel/index.html')
