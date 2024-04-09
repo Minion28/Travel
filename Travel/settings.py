@@ -51,6 +51,14 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# settings.py
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    # Add any custom authentication backends here
+]
+
+
 ROOT_URLCONF = 'Travel.urls'
 
 TEMPLATES = [

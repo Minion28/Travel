@@ -3,15 +3,17 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.contrib.auth import authenticate
-from .models import *
+from .models import UserProfile, Place, Booking, Trip, Review
 
 
 class UserRegistrationForm(UserCreationForm):
     email = forms.EmailField()
+    phone_number = forms.CharField(max_length=20)  # Add phone number field
 
     class Meta:
         model = User
-        fields = ("username", "email", "password1", "password2")
+        fields = ("username", "email", "password1", "password2", "phone_number")
+
 
 class UserLoginForm(forms.Form):
     username = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
@@ -27,37 +29,45 @@ class UserLoginForm(forms.Form):
         if not user:
             raise ValidationError("Invalid username or password.")
 
+
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = ("name", "image", "phone_number")
+
 
 class PlaceForm(forms.ModelForm):
     class Meta:
         model = Place
         fields = ('image', 'title', 'topic', 'description', 'link_to_more_images')
 
+
 class BookingForm(forms.ModelForm):
     class Meta:
         model = Booking
         fields = ('trip_location', 'seat_number')
+
 
 class TripForm(forms.ModelForm):
     class Meta:
         model = Trip
         fields = ('location', 'price', 'number_of_seats')
 
+
 class ReviewForm(forms.ModelForm):
     class Meta:
         model = Review
         fields = ('review',)
 
+
 class SignInForm(forms.Form):
     username = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Username'}))
     password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Password'}))
+
 
 class SignUpForm(forms.Form):
     username = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Username'}))
     email = forms.EmailField(widget=forms.EmailInput(attrs={'placeholder': 'Email'}))
     password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Password'}))
     confirm_password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Confirm Password'}))
+    phone_number = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Phone Number'}))
