@@ -31,11 +31,11 @@
     </div>
     <h1>Welcome,
         {% if user.is_authenticated %}
-            {{ user.username }}
+        {{ user.username }}
         {% else %}
-            Traveller
+        Traveller
         {% endif %}
-    !</h1>
+        !</h1>
 
     <div class="about" id="about">
         <div class="text">
@@ -173,9 +173,8 @@
         <!-- next prev -->
 
         <div class="arrows">
-            <button id="prev">
-                << /button>
-                    <button id="next">></button>
+            <button id="prev"><</button>
+            <button id="next">></button>
         </div>
         <!-- time running -->
         <div class="time"></div>
